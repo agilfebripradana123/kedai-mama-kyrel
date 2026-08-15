@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --color-surface: #fff8f6;
+  --color-on-surface: #281715;
+  --color-on-surface-variant: #5c403b;
+
+  --color-primary: #b10806;
+  --color-on-primary: #ffffff;
+
+  --color-outline-variant: #e5bdb7;
+}
+
+/* ================================
+   DARK MODE
+================================ */
+
+.dark {
+  --color-surface: #1c1210;
+  --color-surface-dim: #241815;
+  --color-surface-bright: #2b1d1a;
+
+  --color-surface-container-lowest: #241815;
+  --color-surface-container-low: #2a1c19;
+  --color-surface-container: #32221f;
+  --color-surface-container-high: #3a2825;
+  --color-surface-container-highest: #432e2a;
+
+  --color-on-surface: #fff1ee;
+  --color-on-surface-variant: #d8bdb7;
+
+  --color-outline: #aa8881;
+  --color-outline-variant: #624945;
+
+  --color-background: #1c1210;
+  --color-on-background: #fff1ee;
+
+  --color-primary: #ff6b5e;
+  --color-on-primary: #ffffff;
+
+  --color-primary-container: #d52b1e;
+  --color-on-primary-container: #fff1ef;
+
+  --color-primary-fixed: #5c1712;
+  --color-on-primary-fixed: #ffdad5;
+}
