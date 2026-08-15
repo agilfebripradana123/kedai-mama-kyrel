@@ -193,6 +193,48 @@ function CartDrawer({ isOpen, onClose }) {
         ========================= */}
 
         <div className="flex-1 overflow-y-auto px-5 py-5">
+          <div className="mb-5">
+            <label
+              htmlFor="customer-name"
+              className="
+      mb-2
+      block
+      font-body
+      text-sm
+      font-semibold
+      text-on-surface
+    "
+            >
+              Nama Pemesan
+              <span className="ml-1 text-primary">*</span>
+            </label>
+
+            <input
+              id="customer-name"
+              type="text"
+              value={customerName}
+              onChange={(event) => setCustomerName(event.target.value)}
+              placeholder="Masukkan nama kamu"
+              className="
+      w-full
+      rounded-xl
+      border
+      border-outline-variant
+      bg-surface-container-low
+      px-4
+      py-3
+      font-body
+      text-sm
+      text-on-surface
+      outline-none
+      transition
+      placeholder:text-on-surface-variant/60
+      focus:border-primary
+      focus:ring-2
+      focus:ring-primary/10
+    "
+            />
+          </div>
           {cartItems.length === 0 ? (
             <div
               className="
@@ -467,50 +509,6 @@ function CartDrawer({ isOpen, onClose }) {
               p-5
             "
           >
-            {/* NAMA PEMESAN */}
-
-            <div className="mb-5">
-              <label
-                htmlFor="customer-name"
-                className="
-      mb-2
-      block
-      font-body
-      text-sm
-      font-semibold
-      text-on-surface
-    "
-              >
-                Nama Pemesan
-                <span className="ml-1 text-primary">*</span>
-              </label>
-
-              <input
-                id="customer-name"
-                type="text"
-                value={customerName}
-                onChange={(event) => setCustomerName(event.target.value)}
-                placeholder="Masukkan nama kamu"
-                className="
-      w-full
-      rounded-xl
-      border
-      border-outline-variant
-      bg-surface-container-low
-      px-4
-      py-3
-      font-body
-      text-sm
-      text-on-surface
-      outline-none
-      transition
-      placeholder:text-on-surface-variant/60
-      focus:border-primary
-      focus:ring-2
-      focus:ring-primary/10
-    "
-              />
-            </div>
             {/* TOTAL */}
 
             <div className="mb-4 flex items-center justify-between">

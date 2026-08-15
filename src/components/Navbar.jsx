@@ -41,7 +41,7 @@ function Navbar({ darkMode, setDarkMode, onCartClick }) {
             <img
               src="/assets/logo.png"
               alt="Kedai Mama Kyrel"
-              className="block w-28 object-contain"
+              className="block w-[140px] object-contain"
             />
           </a>
         </div>
@@ -226,10 +226,10 @@ function Navbar({ darkMode, setDarkMode, onCartClick }) {
       </nav>
 
       {/* =========================
-          MOBILE HEADER
-      ========================= */}
+    MOBILE HEADER
+========================= */}
 
-      <nav className="flex h-[68px] w-full items-center px-4 md:hidden">
+      <nav className="flex h-[76px] w-full items-center px-4 md:hidden">
         {/* LOGO KIRI */}
 
         <a
@@ -237,24 +237,24 @@ function Navbar({ darkMode, setDarkMode, onCartClick }) {
           aria-label="Kedai Mama Kyrel"
           onClick={handleNavClick}
           className="
-            inline-flex
-            shrink-0
-            transition-transform
-            duration-200
-            hover:scale-[1.02]
-            active:scale-95
-          "
+      inline-flex
+      shrink-0
+      transition-transform
+      duration-200
+      hover:scale-[1.02]
+      active:scale-95
+    "
         >
           <img
             src="/assets/logo.png"
             alt="Kedai Mama Kyrel"
-            className="block w-[100px] object-contain"
+            className="block w-[120px] object-contain"
           />
         </a>
 
         {/* MOBILE BUTTONS KANAN */}
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-2.5">
           {/* THEME */}
 
           <button
@@ -262,92 +262,94 @@ function Navbar({ darkMode, setDarkMode, onCartClick }) {
             aria-label="Ubah tema"
             onClick={() => setDarkMode(!darkMode)}
             className="
-              group
-              flex
-              h-9
-              w-9
-              items-center
-              justify-center
-              rounded-full
-              border
-              border-outline-variant
-              bg-surface-container-lowest
-              text-on-surface
-              transition-all
-              duration-200
-              hover:border-primary
-              hover:bg-primary
-              hover:text-on-primary
-              active:scale-95
-            "
+        group
+        flex
+        h-11
+        w-11
+        items-center
+        justify-center
+        rounded-full
+        border
+        border-outline-variant
+        bg-surface-container-lowest
+        text-on-surface
+        transition-all
+        duration-200
+        hover:border-primary
+        hover:bg-primary
+        hover:text-on-primary
+        active:scale-95
+      "
           >
             <FiSun
-              size={17}
+              size={20}
               className="transition-transform duration-500 group-hover:rotate-90"
             />
           </button>
 
           {/* CART */}
+
           <button
             type="button"
             onClick={onCartClick}
             aria-label="Buka keranjang"
             className="
-    relative
-    flex
-    h-10
-    w-10
-    items-center
-    justify-center
-    rounded-full
-    border
-    border-outline-variant
-    bg-surface-container-lowest
-    text-on-surface
-    transition-all
-    duration-200
-    hover:border-primary
-    hover:bg-primary
-    hover:text-on-primary
-    active:scale-95
-  "
+        relative
+        flex
+        h-11
+        w-11
+        items-center
+        justify-center
+        rounded-full
+        border
+        border-outline-variant
+        bg-surface-container-lowest
+        text-on-surface
+        transition-all
+        duration-200
+        hover:border-primary
+        hover:bg-primary
+        hover:text-on-primary
+        active:scale-95
+      "
           >
-            <FiShoppingCart size={18} />
+            <FiShoppingCart size={20} />
 
             {/* BADGE JUMLAH */}
+
             {totalItems > 0 && (
               <span
                 key={totalItems}
                 className="
-      absolute
-      -right-1
-      -top-1
-      z-20
-      flex
-      min-h-[20px]
-      min-w-[20px]
-      items-center
-      justify-center
-      rounded-full
-      bg-primary
-      px-1
-      font-body
-      text-[11px]
-      font-bold
-      leading-none
-      text-white
-      shadow-md
-      ring-2
-      ring-surface
-      animate-bounce
-    "
+            absolute
+            -right-1
+            -top-1
+            z-20
+            flex
+            min-h-[20px]
+            min-w-[20px]
+            items-center
+            justify-center
+            rounded-full
+            bg-primary
+            px-1
+            font-body
+            text-[11px]
+            font-bold
+            leading-none
+            text-white
+            shadow-md
+            ring-2
+            ring-surface
+            animate-bounce
+          "
               >
                 {totalItems > 99 ? "99+" : totalItems}
               </span>
             )}
           </button>
 
-          {/* MENU */}
+          {/* HAMBURGER */}
 
           <button
             type="button"
@@ -355,26 +357,25 @@ function Navbar({ darkMode, setDarkMode, onCartClick }) {
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen(!mobileOpen)}
             className="
-              flex
-              h-9
-              w-9
-              items-center
-              justify-center
-              rounded-full
-              bg-primary
-              text-on-primary
-              transition-all
-              duration-200
-              hover:bg-primary-container
-              hover:shadow-md
-              active:scale-95
-            "
+        flex
+        h-11
+        w-11
+        items-center
+        justify-center
+        rounded-full
+        bg-primary
+        text-on-primary
+        transition-all
+        duration-200
+        hover:bg-primary-container
+        hover:shadow-md
+        active:scale-95
+      "
           >
-            {mobileOpen ? <FiX size={19} /> : <FiMenu size={19} />}
+            {mobileOpen ? <FiX size={20} /> : <FiMenu size={20} />}
           </button>
         </div>
       </nav>
-
       {/* =========================
           MOBILE MENU
       ========================= */}

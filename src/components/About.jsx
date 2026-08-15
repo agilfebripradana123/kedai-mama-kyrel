@@ -52,7 +52,7 @@ function About() {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d415.88614021581816!2d109.98278112938056!3d-7.3988532208306355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a9f30af498955%3A0x9705e549e6939c0d!2sSTOCKIST%20NASA%20AA.3498!5e0!3m2!1sid!2sid!4v1786750694850!5m2!1sid!2sid"
               className="h-[320px] w-full sm:h-[400px]"
               loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
+              referrerPolicy="strict-origin-when-cross-origin"
             ></iframe>
 
             <div className="border-t border-outline-variant p-4">
