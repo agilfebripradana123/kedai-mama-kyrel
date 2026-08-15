@@ -40,7 +40,10 @@ function CartDrawer({ isOpen, onClose }) {
 
     const name = customerName.trim();
 
+    // =========================
     // VALIDASI NAMA
+    // =========================
+
     if (!name) {
       setNameError("Nama pemesan wajib diisi.");
       return;
@@ -58,34 +61,63 @@ function CartDrawer({ isOpen, onClose }) {
 
     setNameError("");
 
+    // =========================
+    // WHATSAPP
+    // =========================
+
     const phoneNumber = "6285868749808";
 
-    let message = `Halo Kedai Mama Kyrel\n\n`;
+    let message = `Halo Kedai Mama Kyrel\n`;
     message += `Saya ingin memesan:\n\n`;
-    message += `Nama: ${customerName.trim()}\n\n`;
+    message += `Nama: ${name}\n\n`;
 
     cartItems.forEach((item, index) => {
       message += `${index + 1}. ${item.name}\n`;
 
+      // UKURAN
       if (item.size) {
-        message += `   Ukuran: ${item.size}\n`;
+        if (item.name === "Seblak") {
+          message += `   Paket: ${item.size}\n`;
+        } else {
+          message += `   Ukuran: ${item.size}\n`;
+        }
       }
 
+      // TOPPING
       if (item.topping) {
         message += `   Topping: ${item.topping}\n`;
       }
 
-      if (item.level) {
+      // LEVEL
+      if (
+        item.level !== "" &&
+        item.level !== null &&
+        item.level !== undefined
+      ) {
         message += `   Level: ${item.level}\n`;
       }
 
-      message += `   Harga: ${formatRupiah(item.price)}\n`;
-      message += `   Jumlah: ${item.quantity}\n`;
+      // HARGA
+      if (item.level && item.level > 2) {
+        const levelNumber = Number(item.level);
+        const additionalLevelPrice = (levelNumber - 2) * 1000;
+        const basePrice = item.price - additionalLevelPrice;
 
-      if (item.note) {
-        message += `   Catatan: ${item.note}\n`;
+        message += `   Harga : ${formatRupiah(basePrice)}\n`;
+        message += `   Level ${levelNumber}: +${formatRupiah(additionalLevelPrice)}\n`;
+      } else {
+        message += `   Harga: ${formatRupiah(item.price)}\n`;
       }
 
+      // JUMLAH
+      message += `   Jumlah: ${item.quantity}\n`;
+
+      // CATATAN
+      if (item.note) {
+        message += `   Catatan: ${item.note}\n\n`;
+      }
+
+      // SUBTOTAL
       message += `   Subtotal: ${formatRupiah(item.price * item.quantity)}\n\n`;
     });
 

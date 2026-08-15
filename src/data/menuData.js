@@ -1,5 +1,38 @@
 export const menuData = [
   // =========================
+  // ⭐ MENU SPESIAL
+  // =========================
+
+  {
+    id: 0,
+    category: "Makanan",
+    name: "Seblak",
+    special: true,
+    description: "Seblak dengan pilihan paket sesuai selera.",
+    variants: [
+      {
+        name: "Paket 1",
+        price: 8000,
+        description: "Seblak basic",
+      },
+      {
+        name: "Paket 2",
+        price: 12000,
+        description: "Seblak dengan topping lebih lengkap",
+      },
+      {
+        name: "Paket 3",
+        price: 16000,
+        description: "Seblak spesial dengan topping lengkap",
+      },
+    ],
+    level: {
+      freeUntil: 2,
+      additionalPrice: 1000,
+    },
+  },
+
+  // =========================
   // MAKANAN
   // =========================
 
@@ -68,6 +101,10 @@ export const menuData = [
         price: 10000,
       },
     ],
+    level: {
+      freeUntil: 2,
+      additionalPrice: 1000,
+    },
   },
 
   {
@@ -137,47 +174,32 @@ export const menuData = [
     ],
   },
 
-  // =========================
-  // MAKANAN LAIN
-  // =========================
-
   {
     id: 12,
-    category: "Makanan Lain",
+    category: "Makanan",
     name: "Ayam Geprek",
     price: 10000,
   },
 
   {
     id: 13,
-    category: "Makanan Lain",
+    category: "Makanan",
     name: "Nasi Goreng",
     price: 10000,
   },
 
   {
     id: 14,
-    category: "Makanan Lain",
+    category: "Makanan",
     name: "Bakso Tetelan",
     price: 10000,
   },
 
   {
     id: 15,
-    category: "Makanan Lain",
+    category: "Makanan",
     name: "Mie Level Syalala",
     price: 10000,
-  },
-
-  // =========================
-  // LEVEL
-  // =========================
-
-  {
-    id: 16,
-    category: "Level",
-    name: "Level",
-    description: "Level 0–2 gratis. Naik 1 level +1RB.",
     level: {
       freeUntil: 2,
       additionalPrice: 1000,

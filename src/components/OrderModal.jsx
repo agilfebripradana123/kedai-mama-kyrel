@@ -21,6 +21,56 @@ function OrderModal({ menu, onClose }) {
 
   /*
    * =========================
+   * DATA VARIANT
+   * =========================
+   */
+
+  const sizes = menu?.variants || [];
+  const toppings = menu?.toppings || [];
+
+  const hasSize = sizes.length > 0;
+  const hasTopping = toppings.length > 0;
+
+  /*
+   * =========================
+   * LEVEL
+   * =========================
+   *
+   * Hanya menu yang mempunyai
+   * property "level" yang akan
+   * menampilkan pilihan level.
+   */
+
+  const hasLevel = !!menu?.level;
+
+  const levelOptions = hasLevel
+    ? Array.from({ length: 6 }, (_, index) => index)
+    : [];
+
+  const selectedLevelNumber =
+    selectedLevel === "" ? null : Number(selectedLevel);
+
+  /*
+   * =========================
+   * TAMBAHAN HARGA LEVEL
+   * =========================
+   *
+   * Level 0-2 gratis.
+   * Level 3 = +Rp1.000
+   * Level 4 = +Rp2.000
+   * Level 5 = +Rp3.000
+   */
+
+  const levelAdditionalPrice =
+    hasLevel &&
+    selectedLevelNumber !== null &&
+    selectedLevelNumber > menu.level.freeUntil
+      ? (selectedLevelNumber - menu.level.freeUntil) *
+        menu.level.additionalPrice
+      : 0;
+
+  /*
+   * =========================
    * RESET SAAT MENU BERUBAH
    * =========================
    */
@@ -68,39 +118,17 @@ function OrderModal({ menu, onClose }) {
 
   /*
    * =========================
-   * DATA VARIANT
-   * =========================
-   */
-
-  const sizes = menu.variants || [];
-
-  const toppings = menu.toppings || [];
-
-  /*
-   * Level sementara mengikuti
-   * struktur menuData kamu.
-   */
-
-  const hasSize = sizes.length > 0;
-  const hasTopping = toppings.length > 0;
-
-  /*
-   * =========================
    * HARGA
    * =========================
-   *
-   * Kalau menu punya variants:
-   * harga mengikuti variant.
-   *
-   * Kalau menu tidak punya variants:
-   * menggunakan menu.price.
    */
 
   const selectedVariant = sizes.find(
     (variant) => variant.name === selectedSize,
   );
 
-  const currentPrice = selectedVariant?.price ?? menu.price ?? 0;
+  const basePrice = selectedVariant?.price ?? menu.price ?? 0;
+
+  const currentPrice = basePrice + levelAdditionalPrice;
 
   /*
    * =========================
@@ -111,28 +139,53 @@ function OrderModal({ menu, onClose }) {
   const handleAddToCart = () => {
     if (isAdded) return;
 
+    /*
+     * VALIDASI UKURAN
+     */
+
     if (hasSize && !selectedSize) {
       setErrors((current) => ({
         ...current,
         size: "Silakan pilih porsi terlebih dahulu.",
       }));
+
       return;
     }
+
+    /*
+     * VALIDASI TOPPING
+     */
 
     if (hasTopping && !selectedTopping) {
       setErrors((current) => ({
         ...current,
         topping: "Silakan pilih topping terlebih dahulu.",
       }));
+
       return;
     }
+
+    /*
+     * VALIDASI LEVEL
+     */
+
+    if (hasLevel && selectedLevel === "") {
+      setErrors((current) => ({
+        ...current,
+        level: "Silakan pilih level pedas terlebih dahulu.",
+      }));
+
+      return;
+    }
+
+    /*
+     * TAMBAH KE KERANJANG
+     */
 
     addToCart({
       menuId: menu.id,
       name: menu.name,
-      price: selectedSize
-        ? sizes.find((size) => size.name === selectedSize)?.price || menu.price
-        : menu.price,
+      price: currentPrice,
       image: menu.image,
       size: selectedSize,
       topping: selectedTopping,
@@ -147,6 +200,7 @@ function OrderModal({ menu, onClose }) {
       onClose();
     }, 700);
   };
+
   return (
     <div
       className="
@@ -343,6 +397,37 @@ function OrderModal({ menu, onClose }) {
           )}
 
           {/* =========================
+              LEVEL PEDAS
+          ========================= */}
+
+          {hasLevel && (
+            <OptionGroup
+              label="Level Pedas"
+              options={levelOptions.map((level) => ({
+                name: `Level ${level}`,
+                value: level,
+                price:
+                  level > menu.level.freeUntil
+                    ? (level - menu.level.freeUntil) *
+                      menu.level.additionalPrice
+                    : 0,
+              }))}
+              value={selectedLevel === "" ? "" : `Level ${selectedLevel}`}
+              error={errors.level}
+              onChange={(value) => {
+                const level = value.replace("Level ", "");
+
+                setSelectedLevel(level);
+
+                setErrors((current) => ({
+                  ...current,
+                  level: "",
+                }));
+              }}
+            />
+          )}
+
+          {/* =========================
               JUMLAH
           ========================= */}
 
@@ -531,32 +616,33 @@ function OrderModal({ menu, onClose }) {
             </button>
 
             {/* TAMBAH */}
+
             <button
               type="button"
               onClick={handleAddToCart}
               className={`
-    flex
-    h-12
-    flex-[1.5]
-    items-center
-    justify-center
-    gap-2
-    rounded-xl
-    bg-primary
-    px-4
-    font-body
-    text-sm
-    font-semibold
-    text-on-primary
-    shadow-[0_5px_16px_rgba(177,8,6,0.18)]
-    transition-all
-    duration-200
-    hover:-translate-y-0.5
-    hover:bg-primary-container
-    hover:shadow-[0_8px_20px_rgba(177,8,6,0.25)]
-    active:scale-[0.98]
-    ${isAdded ? "scale-105" : ""}
-  `}
+                flex
+                h-12
+                flex-[1.5]
+                items-center
+                justify-center
+                gap-2
+                rounded-xl
+                bg-primary
+                px-4
+                font-body
+                text-sm
+                font-semibold
+                text-on-primary
+                shadow-[0_5px_16px_rgba(177,8,6,0.18)]
+                transition-all
+                duration-200
+                hover:-translate-y-0.5
+                hover:bg-primary-container
+                hover:shadow-[0_8px_20px_rgba(177,8,6,0.25)]
+                active:scale-[0.98]
+                ${isAdded ? "scale-105" : ""}
+              `}
             >
               <FiShoppingCart
                 size={17}
@@ -580,6 +666,7 @@ function OptionGroup({ label, options, value, onChange, error }) {
   return (
     <div>
       {/* LABEL */}
+
       <div className="mb-3 flex items-center justify-between">
         <label
           className="
@@ -609,12 +696,13 @@ function OptionGroup({ label, options, value, onChange, error }) {
       </div>
 
       {/* OPTIONS */}
+
       <div className="grid grid-cols-2 gap-2.5">
         {options.map((option) => {
           const optionValue =
             typeof option === "string"
               ? option
-              : option.name || option.label || option.value;
+              : (option.name ?? option.label ?? option.value);
 
           const optionPrice = typeof option === "object" ? option.price : null;
 
@@ -660,11 +748,13 @@ function OptionGroup({ label, options, value, onChange, error }) {
               `}
             >
               {/* NAMA */}
+
               <span className="font-body text-sm font-semibold">
                 {optionValue}
               </span>
 
               {/* HARGA */}
+
               {optionPrice !== null && (
                 <span
                   className={`
@@ -683,6 +773,7 @@ function OptionGroup({ label, options, value, onChange, error }) {
               )}
 
               {/* CHECK */}
+
               {isSelected && (
                 <span
                   className="
@@ -709,6 +800,7 @@ function OptionGroup({ label, options, value, onChange, error }) {
       </div>
 
       {/* ERROR */}
+
       {error && (
         <div
           className="
