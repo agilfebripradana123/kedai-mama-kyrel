@@ -1,6 +1,6 @@
 export const menuData = [
   // =========================
-  // ⭐ MENU SPESIAL
+  // ⭐ 3 MENU UTAMA
   // =========================
 
   {
@@ -8,6 +8,7 @@ export const menuData = [
     category: "Makanan",
     name: "Seblak",
     special: true,
+    image: "/assets/menu/seblak.webp",
     description: "Seblak dengan pilihan paket sesuai selera.",
     variants: [
       {
@@ -32,65 +33,11 @@ export const menuData = [
     },
   },
 
-  // =========================
-  // MAKANAN
-  // =========================
-
-  {
-    id: 1,
-    category: "Makanan",
-    name: "Kentang Goreng",
-    price: 5000,
-  },
-
-  {
-    id: 2,
-    category: "Makanan",
-    name: "Bakso Jontor",
-    price: 5000,
-  },
-
-  {
-    id: 3,
-    category: "Makanan",
-    name: "Mix Platter",
-    price: 10000,
-  },
-
-  {
-    id: 4,
-    category: "Makanan",
-    name: "Bakso Ayam Jontor",
-    price: 5000,
-  },
-
-  {
-    id: 5,
-    category: "Makanan",
-    name: "Bakso Sapi Jontor",
-    price: 10000,
-  },
-
-  {
-    id: 6,
-    category: "Makanan",
-    name: "Sosis Jontor",
-    variants: [
-      {
-        name: "Porsi Kecil",
-        price: 5000,
-      },
-      {
-        name: "Porsi Besar",
-        price: 10000,
-      },
-    ],
-  },
-
   {
     id: 7,
     category: "Makanan",
     name: "Mie Jebew",
+    image: "/assets/menu/mie-jebew.webp",
     variants: [
       {
         name: "Porsi Kecil",
@@ -108,25 +55,26 @@ export const menuData = [
   },
 
   {
-    id: 8,
+    id: 15,
     category: "Makanan",
-    name: "Cireng Isi Ayam Suwir Chili Oil",
-    variants: [
-      {
-        name: "Porsi Kecil",
-        price: 5000,
-      },
-      {
-        name: "Porsi Besar",
-        price: 10000,
-      },
-    ],
+    name: "Mie Level Syalala",
+    price: 10000,
+    image: "/assets/menu/mie-level-syalala.webp",
+    level: {
+      freeUntil: 2,
+      additionalPrice: 1000,
+    },
   },
+
+  // =========================
+  // 🍫 VARIAN + TOPPING
+  // =========================
 
   {
     id: 9,
     category: "Makanan",
     name: "Cheese Roll",
+    image: "/assets/menu/cheese-roll.webp",
     toppings: ["Coklat", "Strawberry", "Matcha", "Tiramisu"],
     variants: [
       {
@@ -144,6 +92,7 @@ export const menuData = [
     id: 10,
     category: "Makanan",
     name: "Pisang Coklat",
+    image: "/assets/menu/pisang-coklat.webp",
     toppings: ["Coklat", "Strawberry", "Matcha", "Tiramisu"],
     variants: [
       {
@@ -160,7 +109,8 @@ export const menuData = [
   {
     id: 11,
     category: "Makanan",
-    name: "Pissang Nugget",
+    name: "Pisang Nugget",
+    image: "/assets/menu/pisang-nugget.webp",
     toppings: ["Coklat", "Strawberry", "Matcha", "Tiramisu"],
     variants: [
       {
@@ -174,11 +124,94 @@ export const menuData = [
     ],
   },
 
+  // =========================
+  // 🍽️ VARIAN SAJA
+  // =========================
+
+  {
+    id: 6,
+    category: "Makanan",
+    name: "Sosis Jontor",
+    image: "/assets/menu/sosis-jontor.webp",
+    variants: [
+      {
+        name: "Porsi Kecil",
+        price: 5000,
+      },
+      {
+        name: "Porsi Besar",
+        price: 10000,
+      },
+    ],
+  },
+
+  {
+    id: 8,
+    category: "Makanan",
+    name: "Cireng Isi Ayam Suwir Chili Oil",
+    image: "/assets/menu/cireng-isi-ayam-suwir-chili-oil.webp",
+    variants: [
+      {
+        name: "Porsi Kecil",
+        price: 5000,
+      },
+      {
+        name: "Porsi Besar",
+        price: 10000,
+      },
+    ],
+  },
+
+  // =========================
+  // 🍽️ TANPA VARIAN & TOPPING
+  // =========================
+
+  {
+    id: 1,
+    category: "Makanan",
+    name: "Kentang Goreng",
+    price: 5000,
+    image: "/assets/menu/kentang-goreng.webp",
+  },
+
+  {
+    id: 2,
+    category: "Makanan",
+    name: "Basreng Jontor",
+    price: 5000,
+    image: "/assets/menu/basreng-jontor.webp",
+  },
+
+  {
+    id: 3,
+    category: "Makanan",
+    name: "Mix Platter",
+    price: 10000,
+    image: "/assets/menu/mix-platter.webp",
+  },
+
+  {
+    id: 4,
+    category: "Makanan",
+    name: "Bakso Ayam Jontor",
+    price: 5000,
+    image: "/assets/menu/bakso-ayam-jontor.webp",
+  },
+
+  {
+    id: 5,
+    category: "Makanan",
+    name: "Bakso Sapi Jontor",
+    price: 10000,
+    image: "/assets/menu/bakso-sapi-jontor.webp",
+  },
+
   {
     id: 12,
     category: "Makanan",
     name: "Ayam Geprek",
     price: 10000,
+    image: "/assets/menu/ayam-geprek.webp",
   },
 
   {
@@ -186,6 +219,7 @@ export const menuData = [
     category: "Makanan",
     name: "Nasi Goreng",
     price: 10000,
+    image: "/assets/menu/nasi-goreng.webp",
   },
 
   {
@@ -193,27 +227,18 @@ export const menuData = [
     category: "Makanan",
     name: "Bakso Tetelan",
     price: 10000,
-  },
-
-  {
-    id: 15,
-    category: "Makanan",
-    name: "Mie Level Syalala",
-    price: 10000,
-    level: {
-      freeUntil: 2,
-      additionalPrice: 1000,
-    },
+    image: "/assets/menu/bakso-tetelan.webp",
   },
 
   // =========================
-  // MINUMAN
+  // 🥤 MINUMAN
   // =========================
 
   {
     id: 17,
     category: "Minuman",
     name: "Es Teh Jumbo",
+    image: "/assets/menu/es-teh-jumbo.webp",
     variants: [
       {
         name: "Cup Kecil",
@@ -231,6 +256,7 @@ export const menuData = [
     category: "Minuman",
     name: "Pop Ice",
     price: 3000,
+    image: "/assets/menu/pop-ice.webp",
   },
 
   {
@@ -238,6 +264,7 @@ export const menuData = [
     category: "Minuman",
     name: "Es Jeruk",
     price: 5000,
+    image: "/assets/menu/es-jeruk.webp",
   },
 
   {
@@ -245,6 +272,7 @@ export const menuData = [
     category: "Minuman",
     name: "Pop Ice Milky",
     price: 5000,
+    image: "/assets/menu/pop-ice.webp",
   },
 
   {
@@ -252,6 +280,7 @@ export const menuData = [
     category: "Minuman",
     name: "Es Millo",
     price: 5000,
+    image: "/assets/menu/es-millo.webp",
   },
 
   {
@@ -259,5 +288,6 @@ export const menuData = [
     category: "Minuman",
     name: "Es Chocolatos",
     price: 5000,
+    image: "/assets/menu/es-chocolatos.webp",
   },
 ];

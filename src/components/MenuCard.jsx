@@ -72,7 +72,7 @@ function MenuCard({ menu, onOrder }) {
   "
       >
         <img
-          src="/assets/hero.webp"
+          src={menu.image}
           alt={menu.name}
           className="
       h-full
