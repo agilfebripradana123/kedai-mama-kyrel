@@ -16,6 +16,7 @@ function formatRupiah(value) {
 
 function CartDrawer({ isOpen, onClose }) {
   const [customerName, setCustomerName] = useState("");
+  const [nameError, setNameError] = useState("");
   const {
     cartItems,
     removeFromCart,
@@ -37,10 +38,25 @@ function CartDrawer({ isOpen, onClose }) {
       return;
     }
 
-    if (!customerName.trim()) {
-      alert("Silakan masukkan nama pemesan terlebih dahulu.");
+    const name = customerName.trim();
+
+    // VALIDASI NAMA
+    if (!name) {
+      setNameError("Nama pemesan wajib diisi.");
       return;
     }
+
+    if (name.length < 2) {
+      setNameError("Nama minimal 2 karakter.");
+      return;
+    }
+
+    if (!/^[a-zA-ZÀ-ÿ\s]+$/.test(name)) {
+      setNameError("Nama hanya boleh berisi huruf dan spasi.");
+      return;
+    }
+
+    setNameError("");
 
     const phoneNumber = "6285868749808";
 
@@ -213,13 +229,22 @@ function CartDrawer({ isOpen, onClose }) {
               id="customer-name"
               type="text"
               value={customerName}
-              onChange={(event) => setCustomerName(event.target.value)}
+              maxLength={50}
+              onChange={(event) => {
+                const value = event.target.value;
+
+                setCustomerName(value);
+
+                // Hapus error ketika user mulai memperbaiki
+                if (nameError) {
+                  setNameError("");
+                }
+              }}
               placeholder="Masukkan nama kamu"
-              className="
+              className={`
       w-full
       rounded-xl
       border
-      border-outline-variant
       bg-surface-container-low
       px-4
       py-3
@@ -229,11 +254,19 @@ function CartDrawer({ isOpen, onClose }) {
       outline-none
       transition
       placeholder:text-on-surface-variant/60
-      focus:border-primary
       focus:ring-2
-      focus:ring-primary/10
-    "
+      ${
+        nameError
+          ? "border-error focus:border-error focus:ring-error/10"
+          : "border-outline-variant focus:border-primary focus:ring-primary/10"
+      }
+    `}
             />
+
+            {/* ERROR */}
+            {nameError && (
+              <p className="mt-2 text-xs font-medium text-error">{nameError}</p>
+            )}
           </div>
           {cartItems.length === 0 ? (
             <div
