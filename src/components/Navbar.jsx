@@ -315,7 +315,7 @@ function Navbar({ darkMode, setDarkMode, onCartClick }) {
           >
             {/* SUN */}
             <FiSun
-              size={18}
+              size={20}
               className={`
       absolute
       transition-all
@@ -331,7 +331,7 @@ function Navbar({ darkMode, setDarkMode, onCartClick }) {
 
             {/* MOON */}
             <FiMoon
-              size={18}
+              size={20}
               className={`
       absolute
       transition-all
