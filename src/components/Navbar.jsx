@@ -292,28 +292,57 @@ function Navbar({ darkMode, setDarkMode, onCartClick }) {
             aria-label="Ubah tema"
             onClick={() => setDarkMode(!darkMode)}
             className="
-        group
-        flex
-        h-11
-        w-11
-        items-center
-        justify-center
-        rounded-full
-        border
-        border-outline-variant
-        bg-surface-container-lowest
-        text-on-surface
-        transition-all
-        duration-200
-        hover:border-primary
-        hover:bg-primary
-        hover:text-on-primary
-        active:scale-95
-      "
+    group
+    relative
+    flex
+    h-10
+    w-10
+    items-center
+    justify-center
+    overflow-hidden
+    rounded-full
+    border
+    border-outline-variant
+    bg-surface-container-lowest
+    text-on-surface
+    transition-all
+    duration-300
+    hover:border-primary
+    hover:bg-primary
+    hover:text-on-primary
+    active:scale-95
+  "
           >
+            {/* SUN */}
             <FiSun
-              size={20}
-              className="transition-transform duration-500 group-hover:rotate-90"
+              size={18}
+              className={`
+      absolute
+      transition-all
+      duration-500
+      ease-[cubic-bezier(0.68,-0.55,0.27,1.55)]
+      ${
+        darkMode
+          ? "rotate-[-180deg] scale-0 opacity-0"
+          : "rotate-0 scale-100 opacity-100"
+      }
+    `}
+            />
+
+            {/* MOON */}
+            <FiMoon
+              size={18}
+              className={`
+      absolute
+      transition-all
+      duration-500
+      ease-[cubic-bezier(0.68,-0.55,0.27,1.55)]
+      ${
+        darkMode
+          ? "rotate-0 scale-100 opacity-100"
+          : "rotate-[180deg] scale-0 opacity-0"
+      }
+    `}
             />
           </button>
 
