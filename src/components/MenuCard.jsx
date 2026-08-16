@@ -99,20 +99,19 @@ function MenuCard({ menu, onOrder }) {
         {/* Category */}
         <div
           className="
-      absolute
-      left-4
-      top-4
-      rounded-full
-      bg-white/90
-      px-3
-      py-1.5
-      font-body
-      text-[11px]
-      font-semibold
-      text-on-surface
-      shadow-sm
-      backdrop-blur-sm
-    "
+    absolute
+    left-4
+    top-4
+    rounded-full
+    bg-surface-container-lowest/90
+    px-3
+    py-1.5
+    font-body
+    text-[11px]
+    font-semibold
+    text-on-surface
+    shadow-sm
+  "
         >
           {menu.category}
         </div>

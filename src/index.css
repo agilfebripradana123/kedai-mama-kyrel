@@ -6,13 +6,27 @@
   --font-heading: "Plus Jakarta Sans", sans-serif;
   --font-body: "Inter", sans-serif;
 
+  /* ================================
+     LIGHT MODE
+  ================================ */
+
   --color-surface: #fff8f6;
+  --color-surface-dim: #f5e8e5;
+  --color-surface-bright: #fffdfc;
+
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #fff4f1;
+  --color-surface-container: #f9ebe8;
+  --color-surface-container-high: #f2dfdc;
+  --color-surface-container-highest: #ead3cf;
+
   --color-on-surface: #281715;
   --color-on-surface-variant: #5c403b;
 
   --color-primary: #b10806;
   --color-on-primary: #ffffff;
 
+  --color-outline: #cda39d;
   --color-outline-variant: #e5bdb7;
 }
 
