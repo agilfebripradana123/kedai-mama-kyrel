@@ -295,8 +295,8 @@ function Navbar({ darkMode, setDarkMode, onCartClick }) {
     group
     relative
     flex
-    h-10
-    w-10
+    h-11
+    w-11
     items-center
     justify-center
     overflow-hidden
