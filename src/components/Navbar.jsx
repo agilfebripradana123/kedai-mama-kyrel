@@ -223,7 +223,7 @@ function Navbar({ darkMode, setDarkMode, onCartClick }) {
           {/* WHATSAPP */}
 
           <a
-            href="http://wa.me/6285868749808"
+            href="http://wa.me/6285216632281"
             className="
               group
               inline-flex
