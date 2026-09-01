@@ -65,7 +65,7 @@ function CartDrawer({ isOpen, onClose }) {
     // WHATSAPP
     // =========================
 
-    const phoneNumber = "6285868749808";
+    const phoneNumber = "6285216632281";
 
     let message = `Halo Kedai Mama Kyrel\n`;
     message += `Saya ingin memesan:\n\n`;
