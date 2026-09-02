@@ -1,16 +1,66 @@
-# React + Vite
+# Kedai Mama Kyrel
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Aplikasi ini adalah website untuk Kedai Mama Kyrel, sebuah tempat kuliner rumahan yang menyajikan makanan dan minuman favorit dengan harga bersahabat.
 
-Currently, two official plugins are available:
+## Dibuat dengan apa
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19
+- Vite 8
+- Tailwind CSS 4
+- React Icons
 
-## React Compiler
+## Fitur
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Tampilan responsif dengan tema gelap/terang
+- Tampilan utama (Hero) dengan call-to-action
+- Daftar menu yang dapat difilter berdasarkan kategori (Makanan, Minuman)
+- Detail menu dengan pilihan ukuran, topping, level pedas, dan catatan
+- Keranjang belanja yang dapat ditambahkan, dikurangi, dan dihapus
+- Checkout melalui WhatsApp dengan format pesanan otomatis
+- Informasi tentang kedai dan lokasi melalui Google Maps
+- Footer dengan hak cipta
 
-## Expanding the Oxlint configuration
+## Cara menjalankannya
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+1. Pastikan Anda telah menginstal Node.js dan npm.
+2. Clone repository ini.
+3. Masuk ke direktori projekt dan jalankan `npm install` untuk menginstal dependensi.
+4. Jalankan aplikasi dalam mode development dengan `npm dev`.
+5. Buka browser dan akses `http://localhost:5173` (atau port yang ditampilkan di terminal).
+6. Untuk produksi, jalankan `npm build` lalu `npm preview`.
+
+## Struktur project
+
+```
+kedai-mama-kyrel-baru/
+├── public/                    → Aset statik yang disajikan langsung oleh server
+│   ├── assets/
+│   │   ├── logo.png           → Logo kedai
+│   │   ├── hero.webp          → Gambar hero utama
+│   │   └── menu/              → Foto-foto menu makanan & minuman
+│   ├── favicon.svg            → Icon browser tab
+│   └── icons.svg              → Icon SVG
+├── src/                       → Source code aplikasi
+│   ├── components/            → Komponen UI React
+│   │   ├── Navbar.jsx         → Navigasi atas (desktop + mobile)
+│   │   ├── Hero.jsx           → Bagian hero/landing
+│   │   ├── MenuSection.jsx    → Daftar menu dengan filter kategori
+│   │   ├── MenuCard.jsx       → Kartu individu setiap menu
+│   │   ├── OrderModal.jsx     → Modal pemesanan (ukuran, topping, level, catatan)
+│   │   ├── CartDrawer.jsx     → Drawer keranjang belanja + checkout WhatsApp
+│   │   ├── About.jsx          → Informasi tentang kedai + Google Maps embed
+│   │   └── Footer.jsx         → Footer dengan hak cipta
+│   ├── context/
+│   │   └── CartContext.jsx    → State global keranjang (React Context)
+│   ├── App.jsx                → Komponen root, mengatur tema & layout
+│   ├── main.jsx               → Entry point React
+│   └── index.css              → Style global + Tailwind
+├── index.html                 → HTML template (entry point Vite)
+├── vite.config.js             → Konfigurasi Vite + Tailwind plugin
+├── package.json               → Dependensi & script npm
+└── .oxlintrc.json             → Konfigurasi linter OxLint
+```
+
+## Kontribusi
+
+Project ini dikembangkan secara individu dan hanya berpusat di branch `main`.
